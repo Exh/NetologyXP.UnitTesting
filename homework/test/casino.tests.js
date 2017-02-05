@@ -20,7 +20,7 @@ describe("Roulette tests", function () {
 	it("Enter the game - I am older than 18 years old - I join to the game", function () {
 		//Arrange
 		let roulette = new Roulette();
-		let player = new Player();
+		let player = new Player(26);
 
 		//Action
 		roulette.enter(player);
@@ -30,6 +30,14 @@ describe("Roulette tests", function () {
 	});
 
 	it("Enter the game - I am less than 18 years old - Dealer call the security", function () {
+		//Arrange
+		let roulette = new Roulette();
+		let player = new Player(17);
 
+		//Action
+		roulette.enter(player);
+
+		//Assert
+		assert.equal(false, roulette.hasPlayer(player));
 	});
 });
