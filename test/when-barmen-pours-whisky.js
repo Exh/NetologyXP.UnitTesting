@@ -23,7 +23,12 @@ describe('When barmen pours whisky', function () {
     // <Arrange>.<Assert>
     describe('I ask for 50 grams', function () {
         it('I have a glass with 50 grams of whisky', function () {
+        // Arrange
 
+        // Act
+
+        // Assert
+             assert.equal(50, volumeInGlass);
         });
     });
 
