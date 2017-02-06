@@ -35,9 +35,9 @@ class Roulette {
     {
         this.players.forEach(function(player) {
             var bet = player.getBet(number);
-            console.log("Bet: ", bet);
-            if ((bet != undefined) ||
-                (bet != ""))
+            if ((bet != undefined) &&
+                (bet != "") &&
+                (bet != NaN))
             {
                 bet *= 2;
                 player.addChips(bet);
