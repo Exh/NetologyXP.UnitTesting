@@ -12,11 +12,13 @@ var Player = require('../player.js');
  */
 
 
-// 
+
+describe("Roulette tests", function () {
+
+//
 // <ClassNameTests>.<Act>_<Arrange>_<Assert>
 //
 
-describe("Roulette tests", function () {
 	it("Enter the game - I am older than 18 years old - I join to the game", function () {
 		//Arrange
 		let roulette = new Roulette();
@@ -39,5 +41,23 @@ describe("Roulette tests", function () {
 
 		//Assert
 		assert.equal(false, roulette.hasPlayer(player));
+	});
+
+	it("Add cash to player - I have 0 cash units on my account. I add 50 cash units - I got 50 cash units on my account", function () {
+		let player = new Player(19);
+
+		player.addCash(50);
+
+		assert.equal(50, player.cash);
+	});
+
+	it("Player buy chips - I have 100 cash. I buy 80 chips. - I got 80 chips and 20 cash", function () {
+		let player = new Player(20, 100);
+		let roulette = new Roulette();
+
+		roulette.buyChips(player, 80);
+
+		assert.equal(80, player.chips);
+		assert.equal(20, player.cash)
 	});
 });
