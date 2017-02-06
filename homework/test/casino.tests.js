@@ -92,7 +92,7 @@ describe("Roulette tests", function () {
 
 // <ClassName>Should.<Assert>_<Arrange>
 
-    it("Player Should Set 20 chips on number 1; The win number is 1 then player win & get 40 chips on account.", function() {
+    it("Player Should Set 20 chips on number 1; The win number is 1 then player win & get 40 chips on account", function() {
         let player = new Player(20, 100);
         let roulette = new Roulette();
         roulette.buyChips(player, 20);
@@ -103,7 +103,7 @@ describe("Roulette tests", function () {
         assert.equal(player.chips, 40);
     });
 
-    it("Player Should Set 20 chips on number 1; The win number is 17 then player lose & get 0 chips on account.", function() {
+    it("Player Should Set 20 chips on number 1; The win number is 17 then player lose & get 0 chips on account", function() {
         let player = new Player(20, 100);
         let roulette = new Roulette();
         roulette.buyChips(player, 20);
@@ -111,6 +111,6 @@ describe("Roulette tests", function () {
         player.setBet(1, 20);
         roulette.startGame(17);
 
-        assert.equal(player.chips, 40);
+        assert.equal(player.chips, 0);
     });
 });
