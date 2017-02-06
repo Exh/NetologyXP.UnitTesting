@@ -47,6 +47,11 @@ class Player
         return this._bets[number];
     }
 
+    removeBets()
+    {
+        this._bets = [];
+    }
+
 	get cash()
 	{
 		return this._cash;

@@ -22,13 +22,27 @@ class Roulette {
         var result = this.players.reduce(function(sum, player) {
             var bet = player.getBet(number);
             if ((bet == undefined) ||
-                (bet == "undefined"))
+                (bet == ""))
             {
                 return sum;
             }
             return sum + bet;
         },0);
         return result;
+    }
+
+    startGame(number)
+    {
+        this.players.forEach(function(player) {
+            var bet = player.getBet(number);
+            if ((bet != undefined) ||
+                (bet != ""))
+            {
+                bet *= 2;
+                player.addChips(bet);
+            }
+            player.removeBets();
+        });
     }
 
 	buyChips(player, chips)

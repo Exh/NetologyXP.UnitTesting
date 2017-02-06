@@ -4,9 +4,9 @@ var Player = require('../player.js');
 
 /* Казино (рулетка)
  * Могу войти в игру, если мне есть 18 лет и больше
- * Могу купить фишки
- * Могу сделать ставку и выиграть, если ставка сыграла. Выиграшь - X2 от ставки
+ * Могу купить фишки 
  * В игре несколько человек могут делать ставку
+ * Могу сделать ставку и выиграть, если ставка сыграла. Выиграшь - X2 от ставки
  * Могу проиграть свою ставку, если ошибусь
  * Могу сдлеать ставок на несколько чисел и если одно из них попадет, мой выигрышь составит X2 от этой ставки
  */
@@ -74,12 +74,11 @@ describe("Roulette tests", function () {
 
 // When<Action>.<Arrange><Assert>
 
-    it("When 3 players set bet on the same number. Players 1 set 100 chips; Players 2 set 100 chips; Players 3 set 50 chips; Everyone set on number 1; - Common bet on number 1 is 250 chips", function () {
+    it("When 3 players set bet on the same number. Players 1 set 100 chips; Players 2 set 100 chips; Players 3 set 50 chips; Everyone set on number 1; The common bet on number 1 is 250 chips", function () {
         let player = new Player(20, 100);
         let player1 = new Player(22, 100);
         let player2 = new Player(31, 100);
         let roulette = new Roulette();
-
         roulette.buyChips(player, 100);
         roulette.buyChips(player1, 100);
         roulette.buyChips(player2, 100);
@@ -89,5 +88,18 @@ describe("Roulette tests", function () {
         player2.setBet(1, 50);
 
         assert.equal(roulette.getBet(1), 250);
+    });
+
+// <ClassName>Should.<Assert>_<Arrange>
+
+    it("Player Should Set 20 chips on number 1; The win number is 1 then player get 40 chips on account", function() {
+        let player = new Player(20, 100);
+        let roulette = new Roulette();
+        roulette.buyChips(player, 20);
+
+        player.setBet(1, 20);
+        roulette.startGame(1);
+
+        assert.equal(player.chips, 40);
     });
 });
