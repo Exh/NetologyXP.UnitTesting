@@ -18,6 +18,19 @@ class Roulette {
 			return true;
 	}
 
+    getBet(number) {
+        var result = this.players.reduce(function(sum, player) {
+            var bet = player.getBet(number);
+            if ((bet == undefined) ||
+                (bet == "undefined"))
+            {
+                return sum;
+            }
+            return sum + bet;
+        },0);
+        return result;
+    }
+
 	buyChips(player, chips)
 	{
 		if (!this.hasPlayer(player))

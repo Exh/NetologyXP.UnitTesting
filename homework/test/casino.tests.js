@@ -72,5 +72,21 @@ describe("Roulette tests", function () {
         assert.equal(player.chips, 60);
     });
 
+// When<Action>.<Arrange><Assert>
+    it("When 3 players set bet on the same number. - Players 1 set 100 chips; Players 2 set 100 chips; Players 3 set 50 chips; Everyone set on number 1; Common bet on number 1 is 250 chips", function () {
+        let player = new Player(20, 100);
+        let player1 = new Player(22, 100);
+        let player2 = new Player(31, 100);
+        let roulette = new Roulette();
 
+        roulette.buyChips(player, 100);
+        roulette.buyChips(player1, 100);
+        roulette.buyChips(player2, 100);
+
+        player.setBet(1, 100);
+        player1.setBet(1, 100);
+        player2.setBet(1, 50);
+
+        assert.equal(roulette.getBet(1), 250);
+    });
 });
