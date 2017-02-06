@@ -1,0 +1,20 @@
+docs/AAA-GWT.md
+docs/testing-pyramid.png
+docs/Задания.md
+docs/Зачем тестировать.md
+docs/Именование тестов.md
+docs/Список литературы.md
+docs/Что такое хороший тест.md
+homework/test/casino.tests.js
+homework/homework.md
+homework/player.js
+homework/roulette.js
+src/barmen.js
+test/alcoholic-drinks.tests.js
+test/barmen-should.tests.js
+test/barmen.tests.js
+test/when-barmen-pours-whisky.js
+LICENSE
+package.json
+program.md
+README.md

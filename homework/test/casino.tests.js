@@ -22,13 +22,13 @@ describe("Roulette tests", function () {
 	it("Enter the game - I am older than 18 years old - I join to the game", function () {
 		//Arrange
 		let roulette = new Roulette();
-		let player = new Player(26);
+        let player = new Player(26);
 
 		//Action
 		roulette.enter(player);
 
 		//Assert
-		assert.equal(true, roulette.hasPlayer(player));
+        assert.equal(roulette.hasPlayer(player), true);
 	});
 
 	it("Enter the game - I am less than 18 years old - Dealer call the security", function () {
@@ -40,7 +40,7 @@ describe("Roulette tests", function () {
 		roulette.enter(player);
 
 		//Assert
-		assert.equal(false, roulette.hasPlayer(player));
+        assert.equal(roulette.hasPlayer(player), false);
 	});
 
 	it("Add cash to player - I have 0 cash units on my account. I add 50 cash units - I got 50 cash units on my account", function () {
@@ -48,7 +48,7 @@ describe("Roulette tests", function () {
 
 		player.addCash(50);
 
-		assert.equal(50, player.cash);
+        assert.equal(player.cash, 50);
 	});
 
 	it("Player buy chips - I have 100 cash. I buy 80 chips. - I got 80 chips and 20 cash", function () {
@@ -57,7 +57,20 @@ describe("Roulette tests", function () {
 
 		roulette.buyChips(player, 80);
 
-		assert.equal(80, player.chips);
-		assert.equal(20, player.cash)
+        assert.equal(player.chips, 80);
+        assert.equal(player.cash, 20);
 	});
+
+    it("Player set bet - I have 80 chips. I set 20 chips on number 2 - I got 20 chips on number 2 and 60 chips on my account", function () {
+        let player = new Player(20, 80);
+        let roulette = new Roulette();
+        roulette.buyChips(player, 80);
+
+        player.setBet(2, 20);
+
+        assert.equal(player.getBet(2), 20);
+        assert.equal(player.chips, 60);
+    });
+
+
 });
