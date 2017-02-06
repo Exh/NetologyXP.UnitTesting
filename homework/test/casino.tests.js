@@ -113,4 +113,17 @@ describe("Roulette tests", function () {
 
         assert.equal(player.chips, 0);
     });
+
+    it("Player Should Set 10 chips on number 1, 20 chips on number 2, 10 chips on number 9; The win number is 9. Player get 20 chips on account", function() {
+        let player = new Player(20, 100);
+        let roulette = new Roulette();
+        roulette.buyChips(player, 40);
+
+        player.setBet(1, 10);
+        player.setBet(2, 20);
+        player.setBet(9, 10);
+        roulette.startGame(9);
+
+        assert.equal(player.chips, 20);
+    });
 });
